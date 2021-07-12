@@ -57,9 +57,8 @@ router.get('/', (req, res) => {
  * }
  */
 router.get('/count', (req, res) => {
-  // Remove the lines below and write your implementation
-  res.status(500).send({
-    error: 'not implemented'
+  res.send({
+    count: Object.keys(Questions).length
   })
 })
 
