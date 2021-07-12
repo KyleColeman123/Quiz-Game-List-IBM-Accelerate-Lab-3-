@@ -40,10 +40,15 @@ const shuffleArray = require('../../utils/shuffle');
  * 
  */
 router.get('/', (req, res) => {
-  // Remove the lines below and write your implementation
-  res.status(500).send({
-    error: 'not implemented'
+  let questionsCopy = Questions.map((elem, index) => {
+    return {
+      question: elem.question,
+      options: elem.options,
+      id: (1000 * (index + 1)).toString()
+    }
   })
+
+  res.send(questionsCopy)
 })
 
 /**
