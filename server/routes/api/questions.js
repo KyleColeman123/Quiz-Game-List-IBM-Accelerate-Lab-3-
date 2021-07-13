@@ -82,7 +82,7 @@ router.get('/count', (req, res) => {
  * }
  */
 router.get('/:qId', (req, res) => {
-  // Remove the lines below and write your implementation
+
   res.status(500).send({
     error: 'not implemented'
   })
@@ -111,9 +111,27 @@ router.get('/:qId', (req, res) => {
  * }
  */
 router.post('/result', (req, res) => {
-  // Remove the lines below and write your implementation
-  res.status(500).send({
-    error: 'not implemented'
+  let scoreCount = 0
+  let result = "failed"
+
+  //let keys = Object.keys(req.body)
+
+  let values = Object.values(req.body)
+  console.log(values)
+  Questions.map((q) => {
+    if(values.includes(q.answer)){
+      scoreCount = scoreCount + 1;
+    }
+    if(scoreCount >= 3){
+      result = "passed"
+    }
+  })
+
+  
+  res.send({
+      summary: result,
+      score: scoreCount,
+      total: 4
   })
 })
 
