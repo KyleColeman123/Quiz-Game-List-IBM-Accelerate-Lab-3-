@@ -40,11 +40,11 @@ const shuffleArray = require('../../utils/shuffle');
  * 
  */
 router.get('/', (req, res) => {
-  let questionsCopy = Questions.map((elem, index) => {
+  let questionsCopy = Questions.map(elem => {
     return {
       question: elem.question,
       options: elem.options,
-      id: (1000 * (index + 1)).toString()
+      id: elem.id
     }
   })
 
@@ -131,7 +131,7 @@ router.post('/result', (req, res) => {
   res.send({
       summary: result,
       score: scoreCount,
-      total: 4
+      total: Object.keys(Questions).length
   })
 })
 
