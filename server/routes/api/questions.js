@@ -82,10 +82,15 @@ router.get('/count', (req, res) => {
  * }
  */
 router.get('/:qId', (req, res) => {
-
-  res.status(500).send({
-    error: 'not implemented'
-  })
+  Questions.map(elem => {
+    if(elem.id === req.params.qId){
+      res.send({
+        question: elem.question,
+        options: elem.options,
+        id: elem.id
+      });
+    }
+  });
 })
 
 
